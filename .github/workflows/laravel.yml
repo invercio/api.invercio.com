@@ -21,6 +21,7 @@ jobs:
       CACHE_DRIVER: redis
       QUEUE_CONNECTION: redis
       SESSION_DRIVER: redis
+      TELESCOPE_ENABLED: false
     strategy:
       fail-fast: false
       matrix:
