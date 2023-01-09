@@ -206,8 +206,9 @@ return [
         App\Domain\App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Domain\App\Providers\EventServiceProvider::class,
-        App\Providers\HorizonServiceProvider::class,
+        \App\Domain\App\Providers\HorizonServiceProvider::class,
         App\Domain\App\Providers\RouteServiceProvider::class,
+        \App\Domain\App\Providers\TelescopeServiceProvider::class,
 
     ],
 

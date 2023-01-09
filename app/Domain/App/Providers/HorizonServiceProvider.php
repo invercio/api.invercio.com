@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace App\Domain\App\Providers;
 
 use Laravel\Horizon\Horizon;
 use Laravel\Horizon\HorizonApplicationServiceProvider;
