@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace App\Http\Auth\Middleware;
 
-use App\Http\Auth\Resources\MeResource;
+use App\Http\Auth\Resources\UserResource;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +15,7 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return MeResource::make($request->user());
+                return UserResource::make($request->user());
             }
         }
 
