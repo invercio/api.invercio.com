@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Auth\Controllers;
+namespace App\Http\Controllers\Auth;
 
-use App\Http\Auth\Requests\LoginRequest;
-use App\Http\Auth\Resources\SelfResource;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Auth\LoginRequest;
+use App\Http\Resources\Auth\SelfResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;

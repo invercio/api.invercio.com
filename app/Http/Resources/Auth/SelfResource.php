@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Auth\Resources;
+namespace App\Http\Resources\Auth;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /** @mixin \App\Domain\Auth\Models\User */
-class UserResource extends JsonResource
+class SelfResource extends JsonResource
 {
     /**
      * @param  Request  $request
      * @return array
      */
-    public function toArray($request): array
+    public function toArray($request)
     {
         return [
             'id' => $this->id,

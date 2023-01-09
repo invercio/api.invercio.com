@@ -13,10 +13,6 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
      */
     public function register(): void
     {
-        if ($this->app->runningInConsole()) {
-            config(['telescope.enabled' => false]);
-        }
-
         $this->hideSensitiveRequestDetails();
 
         Telescope::filter(function (IncomingEntry $entry) {

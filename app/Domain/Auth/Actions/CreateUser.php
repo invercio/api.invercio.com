@@ -8,13 +8,15 @@ use App\Domain\Auth\Data\UserData;
 use App\Domain\Auth\Models\User;
 use Hash;
 use Illuminate\Auth\Events\Registered;
-use Lorisleiva\Actions\Concerns\AsAction;
 
 class CreateUser
 {
-    use AsAction;
+    public static function run(UserData $data)
+    {
+        return app(static::class)->execute($data);
+    }
 
-    public function handle(UserData $data)
+    public function execute(UserData $data)
     {
         $user = User::create([
             'name' => $data->name,
