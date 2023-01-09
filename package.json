@@ -1,0 +1,27 @@
+{
+  "name": "invercio",
+  "version": "1.0.0",
+  "description": "This is the API for the Invercio project.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/invercio/api.invercio.com.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/invercio/api.invercio.com/issues"
+  },
+  "homepage": "https://github.com/invercio/api.invercio.com#readme",
+  "devDependencies": {
+    "husky": "^8.0.3"
+  }
+}
