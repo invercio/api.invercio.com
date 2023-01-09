@@ -1,37 +1,38 @@
 <?php
 
-namespace Tests\Feature\Auth;
+declare(strict_types=1);
 
 use App\Domain\Auth\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
+use function Pest\Laravel\assertAuthenticated;
+use function Pest\Laravel\assertGuest;
+use function Pest\Laravel\postJson;
 
-class AuthenticationTest extends TestCase
-{
-    use RefreshDatabase;
+it('should authenticate the user', function () {
+    $user = User::factory()->create();
 
-    public function test_users_can_authenticate_using_the_login_screen(): void
-    {
-        $user = User::factory()->create();
+    $json = postJson(route('login'), [
+        'email' => $user->email,
+        'password' => 'password',
+    ])->assertOk()->json();
 
-        $response = $this->post('/login', [
-            'email' => $user->email,
-            'password' => 'password',
-        ]);
+    expect($json)
+        ->name->toBe($user->name)
+        ->email->toBe($user->email);
 
-        $this->assertAuthenticated();
-        $response->assertNoContent();
-    }
+    assertAuthenticated();
+});
 
-    public function test_users_can_not_authenticate_with_invalid_password(): void
-    {
-        $user = User::factory()->create();
+it('should not authenticate user when providing a wrong password', function (string $password) {
+    $user = User::factory()->create();
 
-        $this->post('/login', [
-            'email' => $user->email,
-            'password' => 'wrong-password',
-        ]);
+    postJson(route('login'), [
+        'email' => $user->email,
+        'password' => $password,
+    ]);
 
-        $this->assertGuest();
-    }
-}
+    assertGuest();
+})->with([
+    'pwd',
+    'passwrd',
+    'wrong-password',
+]);
