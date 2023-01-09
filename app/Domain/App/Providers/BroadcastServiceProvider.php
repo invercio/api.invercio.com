@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace App\Domain\App\Providers;
 
 use Illuminate\Support\Facades\Broadcast;
 use Illuminate\Support\ServiceProvider;
@@ -12,7 +12,7 @@ class BroadcastServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         Broadcast::routes();
 
