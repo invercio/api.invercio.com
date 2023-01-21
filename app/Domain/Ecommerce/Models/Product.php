@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Domain\Ecommerce\Models;
 
 use App\Domain\App\Concerns\HasSlug;
-use App\Domain\Ecommerce\Enums\ProductState;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -14,12 +13,20 @@ class Product extends Model
 {
     use HasFactory, HasSlug;
 
-    protected $guarded = [];
+    protected $guarded = [
+        'published_at',
+    ];
 
     protected $casts = [
-        'state' => ProductState::class,
-        'live_at' => 'datetime',
+        'published_at' => 'datetime',
     ];
+
+    public function markAsPublished(): bool
+    {
+        return $this->forceFill([
+            'published_at' => now(),
+        ])->save();
+    }
 
     //region Relationships
     public function variations(): HasMany

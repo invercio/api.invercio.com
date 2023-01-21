@@ -1,7 +1,5 @@
 <?php
 
-use App\Domain\Ecommerce\Models\Product;
-use App\Domain\Ecommerce\Models\Version;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,13 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $product = Product::factory()->create();
-    $version = Version::create([
-        'product_id' => $product->id,
-    ]);
-
-    return $version->sku;
-
     return ['Invercio' => config('app.version')];
 });
 

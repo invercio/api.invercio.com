@@ -13,9 +13,6 @@ trait HasSku
     {
         static::creating(function (Version $model) {
             $model->sku ??= Str::uuid()->getHex()->toString();
-            while (Version::where('sku', $model->sku)->exists()) {
-                $model->sku ??= Str::uuid()->getHex()->toString();
-            }
         });
     }
 }
