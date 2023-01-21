@@ -15,9 +15,17 @@ class ProductFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
+            'slug' => $this->faker->slug,
             'description' => $this->faker->text,
             'price' => $this->faker->randomNumber(4),
-            'state' => $this->faker->randomElement(['draft', 'published']),
+            'live_at' => now(),
         ];
+    }
+
+    public function unlive(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'live_at' => null,
+        ]);
     }
 }
