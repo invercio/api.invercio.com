@@ -19,6 +19,7 @@ class Product extends Model
         'state' => ProductState::class,
     ];
 
+    //region Relationships
     public function variations(): HasMany
     {
         return $this->hasMany(Variation::class);
@@ -28,4 +29,5 @@ class Product extends Model
     {
         return $this->hasMany(Version::class);
     }
+    //endregion
 }

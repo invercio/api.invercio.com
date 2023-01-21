@@ -11,8 +11,10 @@ class Variation extends Model
 {
     protected $guarded = [];
 
+    //region Relationships
     public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
     }
+    //endregion
 }

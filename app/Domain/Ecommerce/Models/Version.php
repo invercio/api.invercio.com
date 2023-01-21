@@ -12,6 +12,7 @@ class Version extends Model
 {
     protected $guarded = [];
 
+    //region Relationships
     public function variations(): BelongsToMany
     {
         return $this->belongsToMany(Variation::class);
@@ -21,4 +22,5 @@ class Version extends Model
     {
         return $this->belongsTo(Product::class);
     }
+    //endregion
 }
