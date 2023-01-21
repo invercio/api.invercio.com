@@ -1,5 +1,6 @@
 <?php
 
+use App\Domain\Ecommerce\Models\Product;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    $product = Product::first();
+
+    return $product;
+
     return ['Invercio' => config('app.version')];
 });
 
